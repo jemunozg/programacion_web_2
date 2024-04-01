@@ -55,7 +55,9 @@ class ProductoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        //Se utiliza para consultar los datos a editar
+        $producto = Producto::find($id);
+        return view('editar_productos')->with('producto',$producto);
     }
 
     /**
@@ -63,7 +65,14 @@ class ProductoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        //Se hace el Update en la BD
+        $producto = Producto::find($id);
+        $producto->nombre = $request->nom;
+        $producto->descripcion = $request->descri;
+        $producto->precio = $request->precio;
+        $producto->save();
+        return redirect()->route('productos.index');
+
     }
 
     /**
@@ -71,6 +80,9 @@ class ProductoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        // Par eliminar un registro de la BD
+        $producto =  Producto::finde($id);
+        $producto -> delete();
+        return redirect( )->route('productos.index');
     }
 }
