@@ -9,21 +9,29 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="container mt-5 col-md-6 text-center">
+    <div class="container  text-center">
         <form action="{{route('products.store')}}" method = "POST">
             @csrf
-            <div class= "form-group">
-                <label for="name">Nombre</label>
-                <input type="text" name="name" id="name" class="form-control">
+            <div class= "mb-3">
+                <label for="nom" class="form-label">Nombre:
+                    <input type="text"  id="nom" name="nom" class="form-control" require>
+                </label>
+                
             </div>
-            <div class= "form-group">
-                <label for="descripcion">Descripcion</label>
-                <input type="text" name="descri" id="descri" class="form-control">
+            <div class= "mb-3">
+                <label for="descri" class="form-label">Descripcion:
+                    <input type="text" id="descri" name="descri"  class="form-control" require>
+                </label>
+               
             </div>
-            <div class= "form-group">
-                <label for="price">Precio</label>
-                <input type="text" name="price" id="price" class="form-control">
+            <div class= "mb-3">
+                <label for="precio" class="form-label">Precio:
+                    <input type="text" name="price" id="price" class="form-control">
+                </label>  
             </div>
-    
+            <input type="submit" class="btn btn-success btn-block" name="save" value="Guardar">
+            
+        </form>     
+    </div>    
 </body>
 </html>
