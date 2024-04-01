@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('email')->unique();
-            $table->timestamp('email_verified_at')->nullable();
-            $table->string('password');
-            $table->unsignedBigInteger("role_id");
+            $table->unsignedBigInteger('role_id')->nullable();
             $table->foreign("role_id")->references("id")->on("roles");
+            $table->string('password');
             $table->unsignedBigInteger('created_by')->nullable();
             $table->foreign('created_by')->references('id')->on('users');
             $table->unsignedInteger('update_by')->nullable();
