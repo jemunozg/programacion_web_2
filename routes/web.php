@@ -1,7 +1,10 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ProductoController;
 
+Route::get('/productos',[ProductoController::class, 'index'])->name('products.index');
+Route::post('/productos',[ProductoController::class, 'store'])->name('products.store');
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -12,15 +15,12 @@ use Illuminate\Support\Facades\Route;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-/* Route::getprefix('productos')->group(funtion(){
-    Route::get('/',[ProductosController::class,'index'])->name('productos.index');
-    Route::get('crear',[ProductosController::class,'create'])->name('productos.create');
-    Route::post('store',[ProductosController::class,'store'])->name('productos.store');
-    Route::get('editar/{id}',[ProductosController::class,'edit'])->name('productos.edit');
-    Route::put('actualizar/{id}',[ProductosController::class,'update'])->name('productos.update');
-    Route::delete('eliminar/{id}',[ProductosController::class,'destroy'])->name('productos.destroy');    
+/*
+Route::get('/', function () {
+    return view('welcome');
 });
 */
 
-Route::resource('productos','\App\Http\Controllers\ProductosController'); //Pasamos el nombre del controlador completo
+Auth::routes();
+
+Route::get('/home',[App\Http\Controllers\HomeController::class, 'index'])->name('home');
